@@ -1,50 +1,111 @@
-# React + TypeScript + Vite
+# Social Media App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern social media platform built with React, TypeScript, Supabase (for authentication and GraphQL), and Tailwind CSS. This app allows users to sign up, create posts, follow other users, and view a personalized news feed. The app features smooth scrolling for posts, the ability to tag users in posts, and is built with TypeScript for type safety.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Secure sign-up and login using Supabase Auth.
+- **News Feed**: Displays posts from users that the logged-in user follows. Posts are fetched through a GraphQL endpoint.
+- **Post Creation**: Users can create new posts, attach images, and tag other users.
+- **Follow/Unfollow**: Users can follow and unfollow each other.
+- **TypeScript**: Type safety is enforced for all app data and logic.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Backend**: Supabase (for authentication and GraphQL)
+- **Authentication**: Supabase Auth
+- **Data Fetching**: GraphQL
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (v14 or above)
+- npm or yarn
+- A Supabase account for authentication and GraphQL endpoint
+
+### Setup Instructions
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gaurav-pndy/social-app.git
+   cd social-app
+   ```
+
+2. Install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Set up Supabase:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Create a Supabase account and project.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- Enable Authentication with Supabase Auth.
+
+- Create the necessary tables: users, posts, and follow_info.
+
+- Configure GraphQL endpoints using Supabase.
+
+- Add the required configuration keys to your .env file:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_API_KEY=your_supabase_anon_key
 ```
+4. Run the app locally:
+
+```bash
+npm run dev
+# or
+yarn start
+```
+
+## Features Breakdown
+
+### User Authentication (Supabase Auth)
+
+-Users can sign up, log in, and log out securely via Supabase Auth.
+-The app uses JWT tokens for user sessions.
+
+### News Feed
+
+-The news feed displays posts from users that the current user follows.
+-Posts are fetched using a GraphQL query to the Supabase backend.
+
+### Post Creation
+
+-Users can create posts with text and images.
+-Tagging other users is supported in posts, providing an interactive experience.
+-GraphQL mutations are used to create new posts.
+
+### Follow/Unfollow
+
+-Users can follow and unfollow other users.
+-GraphQL queries and mutations handle the follow relationships.
+
+### TypeScript for Type Safety
+
+-TypeScript ensures that all data structures, queries, and mutations are type-safe, preventing runtime errors and improving developer experience.
+
+### UI with React and Tailwind CSS
+
+-The app uses React components for modularity and scalability.
+-Tailwind CSS is used for responsive and modern styling.
+
+### Testing
+
+-Tests are written for core components and functions.
+-Use Jest and React Testing Library to run tests and ensure app stability.
+
+
+## Deployment
+
+**The app is deployed to Vercel for live testing. You can access the live demo [here](https://social-app-nine-gold.vercel.app/)**

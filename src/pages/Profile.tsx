@@ -69,7 +69,7 @@ const Profile = () => {
           <LuLoader className="text-6xl text-gray-700 animate-spin m-auto" />
         </div>
       ) : (
-        <div>
+        <div className="min-h-[94vh]">
           <NavBar /> {/* Navigation Bar Component. */}
           {/* Profile Card component to display user information. */}
           <ProfileCard
